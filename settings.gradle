@@ -1,0 +1,27 @@
+rootProject.name = 'commander-Z'
+
+dependencyResolutionManagement{
+
+    versionCatalogs {
+        create('libs') {
+            // 项目版本
+            version("projectVersion", "0.0.1-SNAPSHOT")
+            // BOM版本
+            version("spring-boot", "3.1.5")
+            version("spring-cloud", "2022.0.4")
+
+            // BOM
+            library("spring-boot-dependencies", "org.springframework.boot", "spring-boot-dependencies").versionRef("spring-boot")
+            library("spring-cloud-dependencies", "org.springframework.cloud", "spring-cloud-dependencies").versionRef("spring-cloud")
+
+            // BOM内存在的依赖
+            library("lombok", "org.projectlombok", "lombok").withoutVersion()
+            library('webflux', 'org.springframework.boot', 'spring-boot-starter-webflux').withoutVersion()
+        }
+    }
+
+
+}
+
+include 'gateway'
+
