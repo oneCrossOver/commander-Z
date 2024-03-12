@@ -1,6 +1,7 @@
 
 
 dependencies {
-    implementation(libs.webflux)
+    implementation('org.springframework.cloud:spring-cloud-starter-gateway')
+    implementation(libs.naocs.discovery)
 
 }
