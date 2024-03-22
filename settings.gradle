@@ -20,6 +20,11 @@ dependencyResolutionManagement{
             library('lombok', 'org.projectlombok', 'lombok').withoutVersion()
             library('webflux', 'org.springframework.boot', 'spring-boot-starter-webflux').withoutVersion()
             library('bootstrap', 'org.springframework.cloud', 'spring-cloud-starter-bootstrap').withoutVersion()
+            library('security', 'org.springframework.boot', 'spring-boot-starter-security').withoutVersion()
+            library('authorization-server', 'org.springframework.boot', 'spring-boot-starter-oauth2-authorization-server').withoutVersion()
+            library('oauth2-client', 'org.springframework.boot', 'spring-boot-starter-oauth2-client').withoutVersion()
+
+
 
             // nacos
             library('naocs-config', 'com.alibaba.cloud', 'spring-cloud-starter-alibaba-nacos-config').versionRef('nacos')
@@ -32,4 +37,5 @@ dependencyResolutionManagement{
 }
 
 include 'gateway'
+include 'oauth2-authorization-server'
 

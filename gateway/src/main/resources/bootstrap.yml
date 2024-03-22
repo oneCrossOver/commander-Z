@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: gateway
@@ -9,7 +12,21 @@ spring:
         namespace: e21d2e95-3638-46e4-b35d-f13f5f553341
       username: nacos
       password: nacos
-server:
-  port: 8088
+  security:
+    oauth2:
+      client:
+        registration:
+          client-a:
+            provider: spring
+            client-id: client-a
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            client-authentication-method: client_secret_jwt
+            redirect-uri: "http://127.0.0.1:8080/index"
+            scope: read
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000
+
 
 

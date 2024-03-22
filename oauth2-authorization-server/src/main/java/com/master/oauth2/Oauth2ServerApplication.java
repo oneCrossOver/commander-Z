@@ -1,13 +1,13 @@
-package com.master;
+package com.master.oauth2;
 
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GatewayApplication {
+public class Oauth2ServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GatewayApplication.class, args);
+        SpringApplication.run(Oauth2ServerApplication.class, args);
     }
 
 
