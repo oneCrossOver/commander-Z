@@ -1,6 +1,10 @@
 server:
   port: 8080
 
+logging:
+  level:
+    org.springframework.security: trace
+
 spring:
   application:
     name: gateway
@@ -14,19 +18,22 @@ spring:
       password: nacos
   security:
     oauth2:
-      client:
-        registration:
-          client-a:
-            provider: spring
-            client-id: client-a
-            client-secret: secret
-            authorization-grant-type: client_credentials
-            client-authentication-method: client_secret_jwt
-            redirect-uri: "http://127.0.0.1:8080/index"
-            scope: read
-        provider:
-          spring:
-            issuer-uri: http://localhost:9000
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+#      client:
+#        registration:
+#          client-a:
+#            provider: spring
+#            client-id: client-a
+#            client-secret: secret
+#            authorization-grant-type: client_credentials
+#            client-authentication-method: client_secret_jwt
+#            redirect-uri: "http://127.0.0.1:8080/index"
+#            scope: read
+#        provider:
+#          spring:
+#            issuer-uri: http://localhost:9000
 
 
 

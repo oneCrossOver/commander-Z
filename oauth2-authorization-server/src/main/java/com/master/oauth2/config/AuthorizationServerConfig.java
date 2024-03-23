@@ -27,7 +27,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import java.util.UUID;
 
 @Configuration
-@EnableWebSecurity
 @Import(OAuth2AuthorizationServerConfiguration.class)
 public class AuthorizationServerConfig {
 
@@ -38,7 +37,7 @@ public class AuthorizationServerConfig {
         http
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/oauth2/**").permitAll()
+                        .anyRequest().permitAll()
                 );
 
 
@@ -53,8 +52,10 @@ public class AuthorizationServerConfig {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("client-a")
-                .clientSecret("secret")
+                .clientSecret("{noop}secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_JWT)
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .redirectUri("http://127.0.0.1:8080/index")
                 .scope("read")
