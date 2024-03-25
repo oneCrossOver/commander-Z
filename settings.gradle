@@ -38,5 +38,5 @@ dependencyResolutionManagement{
 
 include 'gateway'
 include 'oauth2-authorization-server'
-include 'client-test'
+include 'client'
 
