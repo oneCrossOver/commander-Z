@@ -18,7 +18,8 @@ subprojects {
     dependencies {
         implementation(enforcedPlatform(libs.spring.boot.dependencies))
         implementation(enforcedPlatform(libs.spring.cloud.dependencies))
-        implementation(libs.lombok)
+        compileOnly(libs.lombok)
+        annotationProcessor(libs.lombok)
         implementation(libs.bootstrap)
     }
 }

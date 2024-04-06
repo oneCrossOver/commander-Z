@@ -1,0 +1,6 @@
+dependencies {
+    implementation(libs.web)
+    implementation(libs.jpa)
+    runtimeOnly(libs.mysql.connector)
+    compileOnly(libs.lombok)
+}

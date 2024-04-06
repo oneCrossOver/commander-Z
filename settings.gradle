@@ -4,26 +4,30 @@ dependencyResolutionManagement{
 
     versionCatalogs {
         create('libs') {
-            // 项目版本
+            // 版本
             version('projectVersion', '0.0.1-SNAPSHOT')
-            // BOM版本
             version('spring-boot', '3.2.2')
             version('spring-cloud', '2023.0.0')
-            // nacos
             version('nacos','2023.0.0.0-RC1')
+            version('lombok', '1.18.30')
 
             // BOM
             library('spring-boot-dependencies', 'org.springframework.boot', 'spring-boot-dependencies').versionRef('spring-boot')
             library('spring-cloud-dependencies', 'org.springframework.cloud', 'spring-cloud-dependencies').versionRef('spring-cloud')
 
+
             // BOM内存在的依赖
-            library('lombok', 'org.projectlombok', 'lombok').withoutVersion()
+            library('web', 'org.springframework.boot', 'spring-boot-starter-web').withoutVersion()
             library('webflux', 'org.springframework.boot', 'spring-boot-starter-webflux').withoutVersion()
             library('bootstrap', 'org.springframework.cloud', 'spring-cloud-starter-bootstrap').withoutVersion()
             library('security', 'org.springframework.boot', 'spring-boot-starter-security').withoutVersion()
             library('authorization-server', 'org.springframework.boot', 'spring-boot-starter-oauth2-authorization-server').withoutVersion()
             library('oauth2-client', 'org.springframework.boot', 'spring-boot-starter-oauth2-client').withoutVersion()
+            library('jpa', 'org.springframework.boot', 'spring-boot-starter-data-jpa').withoutVersion()
+            library('mysql-connector', 'com.mysql', 'mysql-connector-j').withoutVersion()
 
+            // 需要指定版本的依赖（annotationProcessor无法传递bom版本）
+            library('lombok', 'org.projectlombok', 'lombok').versionRef('lombok')
 
 
             // nacos
@@ -39,4 +43,6 @@ dependencyResolutionManagement{
 include 'gateway'
 include 'oauth2-authorization-server'
 include 'client'
+include 'navigation-bar'
+include 'user'
 

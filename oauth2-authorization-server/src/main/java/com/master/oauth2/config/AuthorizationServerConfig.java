@@ -43,7 +43,6 @@ public class AuthorizationServerConfig {
                 .with(new OAuth2AuthorizationServerConfigurer(),
                         (configurer -> configurer
                                 .registeredClientRepository(this.clientRepository())
-                                .registeredClientRepository(this.userRepository())
                         )
                 );
 
@@ -56,22 +55,6 @@ public class AuthorizationServerConfig {
     }
 
     public RegisteredClientRepository clientRepository() {
-        RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("client-a")
-                .clientSecret("{noop}secret")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_JWT)
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                .redirectUri("http://127.0.0.1:8080/index")
-                .scope("read")
-                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-                .build();
-
-        return new InMemoryRegisteredClientRepository(registeredClient);
-    }
-
-    public RegisteredClientRepository userRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("client-a")
                 .clientSecret("{noop}secret")
